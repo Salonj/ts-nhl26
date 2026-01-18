@@ -10,19 +10,15 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import CreateTournament from "./pages/CreateTournament";
+import TournamentView from "./pages/TournamentView";
 
 const Navbar = ({ user }: { user: User | null }) => {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
 
   return (
-    <nav
-      className={`w-full p-4 z-10 ${
-        isLoginPage
-          ? "absolute top-0 left-0 bg-transparent"
-          : "relative bg-gray-800"
-      }`}
-    >
+    <nav className="w-full p-4 z-50 fixed top-0 left-0  border-white/10">
       <div className="flex justify-between items-center text-white">
         <Link to="/">
           <img src="/logo.png" alt="Logo" className="h-16" />
@@ -67,12 +63,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/tournament/:id" element={<div>Tournament Details</div>} />
+        <Route path="/tournament/:id" element={<TournamentView />} />
         <Route
           path="/create"
           element={
             user ? (
-              <div>Create Tournament</div>
+              <CreateTournament />
             ) : (
               <div>Please log in to create a tournament.</div>
             )

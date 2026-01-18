@@ -1,24 +1,22 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
-import { connectAuthEmulator, getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "API_KEY",
-  authDomain: "PROJECT_ID.firebaseapp.com",
-  projectId: "PROJECT_ID",
-  storageBucket: "PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "SENDER_ID",
-  appId: "APP_ID",
+  apiKey: "AIzaSyAAcGBGJzK9kbRbnAVIZP58f33ENuObaDA",
+  authDomain: "tammersign-nhl.firebaseapp.com",
+  projectId: "tammersign-nhl",
+  storageBucket: "tammersign-nhl.firebasestorage.app",
+  messagingSenderId: "92435604957",
+  appId: "1:92435604957:web:9b2161bf40044d33fa4234",
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 
-const firestore = getFirestore(app);
-
-if (location.hostname === "localhost") {
-  connectFirestoreEmulator(firestore, "127.0.0.1", 8080);
-  connectAuthEmulator(auth, "http://127.0.0.1:9099");
-}
-
-export { firestore, auth };
+export const db = getFirestore(app);
+export const auth = getAuth(app);
